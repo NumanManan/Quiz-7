@@ -1,0 +1,18 @@
+ org 0x00
+	goto start
+	org 0x08
+	retfie
+	org 0x18
+        retfie
+          
+start  clrf TRISD,A
+       setf TRISB,A
+       setf PORTD,A
+       
+check  btfsc  PORTB,0,A
+       bcf    PORTD,0,A
+       btfsc  PORTB,1,A
+       bcf    PORTD,1,A
+       goto   check
+       
+       end
